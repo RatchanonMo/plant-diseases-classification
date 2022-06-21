@@ -34,7 +34,7 @@ st.title("🍃 Plant Diseases Classification")
 st.subheader("Something's wrong on your leaf? Let's find it.")
 
 image_file = st.file_uploader("Upload Leaf Images",
-                                  type=["png", "jpg", "jpeg"])
+                                  type=["png", "jpg", "jpeg","webp"])
 
 if image_file is not None:
 
