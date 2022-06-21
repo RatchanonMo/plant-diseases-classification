@@ -7,26 +7,13 @@ from fastai.vision.all import (
     load_learner,
     PILImage,
 )
-from contextlib import contextmanager
 import pathlib
-
-
-@contextmanager
-def set_posix_windows():
-    posix_backup = pathlib.PosixPath
-    try:
-        pathlib.PosixPath = pathlib.WindowsPath
-        yield
-    finally:
-        pathlib.PosixPath = posix_backup
-
 
 MAIN_MODEL = pathlib.Path("./models/vgg-90.pkl")
 GOOD_OR_BAD = pathlib.Path("./models/good_or_bad.pkl")
 
-with set_posix_windows():
-    learn_inf = load_learner(MAIN_MODEL)
-    good_or_bad = load_learner(GOOD_OR_BAD)
+learn_inf = load_learner(MAIN_MODEL)
+good_or_bad = load_learner(GOOD_OR_BAD)
 
 
 def load_image(image_file):
